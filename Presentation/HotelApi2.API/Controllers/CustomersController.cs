@@ -1,4 +1,6 @@
-﻿using HotelApi2.Application.Services;
+﻿using AutoMapper;
+using HotelApi2.Application.Models;
+using HotelApi2.Application.Services;
 using HotelApi2.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +12,7 @@ namespace HotelApi2.API.Controllers
     public class CustomersController : ControllerBase
     {
         readonly private ICustomerService _customerService;
+        
 
         public CustomersController(ICustomerService customerService)
         {
@@ -40,19 +43,19 @@ namespace HotelApi2.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Customers>> Post(Customers customer)
+        public async Task<ActionResult<CustomerDto>> Post(CustomerDto customerDto)
         {
-            var success = await _customerService.AddAsync(customer);
-            return Ok(customer);
+            var success = await _customerService.AddAsync(customerDto);
+            return Ok(customerDto);
 
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Customers customer)
+        public async Task<IActionResult> Put(CustomerDto customerDto)
         {
 
-            bool response = _customerService.Update(customer);
-            return Ok(customer);
+            bool response = _customerService.Update(customerDto);
+            return Ok(customerDto);
 
 
         }
@@ -64,6 +67,24 @@ namespace HotelApi2.API.Controllers
             bool response = await _customerService.RemoveAsync(id);
             return Ok(response);
         }
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> Post(CustomerDto customerDto)
+        //{
+        //    var customer = _mapper.Map<Customers>(customerDto);
+        //    await _customerService.AddAsync(customer);
+        //    return Ok(customerDto);
+        //}
+
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> Put(CustomerDto customerDto)
+        //{
+        //    var customer = _mapper.Map<Customers>(customerDto);
+        //    _customerService.Update(customer);
+        //    return Ok(customerDto);
+        //}
+
 
     }
 

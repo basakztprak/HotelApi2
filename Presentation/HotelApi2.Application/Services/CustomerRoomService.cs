@@ -1,4 +1,6 @@
-﻿using HotelApi2.Domain.Entities;
+﻿using AutoMapper;
+using HotelApi2.Application.Models;
+using HotelApi2.Domain.Entities;
 using HotelApi2.Domain.Repositories.CustomerRoomRepository;
 using HotelApi2.Infastructure.Repositories.CustomerRoomRepository;
 using System;
@@ -12,51 +14,61 @@ namespace HotelApi2.Application.Services
 {
     public class CustomerRoomService : ICustomerRoomService
     {
-        readonly private ICustomerRoomRepository _customerRoomRepository;
+        private readonly ICustomerRoomRepository _customerRoomRepository;
+        private readonly IMapper _mapper;
 
-        public CustomerRoomService(ICustomerRoomRepository customerRoomRepository)
+        public CustomerRoomService(ICustomerRoomRepository customerRoomRepository, IMapper mapper)
         {
             _customerRoomRepository = customerRoomRepository;
+            _mapper = mapper;
 
         }
 
-        public IQueryable<CustomerRooms> GetAll()
+        public IQueryable<CustomerRoomDto> GetAll()
         {
-            return _customerRoomRepository.GetAll();
+            var customerRoom = _customerRoomRepository.GetAll();
+            return _mapper.ProjectTo<CustomerRoomDto>(customerRoom);
         }
 
-        public IQueryable<CustomerRooms> GetWhere(Expression<Func<CustomerRooms, bool>> method)
+        public IQueryable<CustomerRoomDto> GetWhere(Expression<Func<CustomerRooms, bool>> method)
         {
-            return _customerRoomRepository.GetWhere(method);
+            var customerRoom = _customerRoomRepository.GetWhere(method);
+            return _mapper.ProjectTo<CustomerRoomDto>(customerRoom);
         }
 
-        public async Task<CustomerRooms> GetSingleAsync(Expression<Func<CustomerRooms, bool>> method)
+        public async Task<CustomerRoomDto> GetSingleAsync(Expression<Func<CustomerRooms, bool>> method)
         {
-            return await _customerRoomRepository.GetSingleAsync(method);
+            var customerRoom = await _customerRoomRepository.GetSingleAsync(method);
+            return _mapper.Map<CustomerRoomDto>(customerRoom);
         }
 
-        public async Task<CustomerRooms> GetByIdAsync(int id)
+        public async Task<CustomerRoomDto> GetByIdAsync(int id)
         {
-            return await _customerRoomRepository.GetByIdAsync(id);
+            var customerRoom = await _customerRoomRepository.GetByIdAsync(id);
+            return _mapper.Map<CustomerRoomDto>(customerRoom);
         }
 
-        public async Task<bool> AddAsync(CustomerRooms model)
+        public async Task<bool> AddAsync(CustomerRoomDto modelDto)
         {
+            var model = _mapper.Map<CustomerRooms>(modelDto);
             return await _customerRoomRepository.AddAsync(model);
         }
 
-        public async Task<bool> AddRangeAsync(List<CustomerRooms> datas)
+        public async Task<bool> AddRangeAsync(List<CustomerRoomDto> datasDto)
         {
-            return await _customerRoomRepository.AddRangeAsync(datas);
+            var datas = _mapper.Map<List<CustomerRooms>>(datasDto);
+            return await _customerRoomRepository.AddRangeAsync(datas); ;
         }
 
-        public bool RemoveRange(List<CustomerRooms> datas)
+        public bool RemoveRange(List<CustomerRoomDto> datasDto)
         {
+            var datas = _mapper.Map<List<CustomerRooms>>(datasDto);
             return _customerRoomRepository.RemoveRange(datas);
         }
 
-        public bool Remove(CustomerRooms model)
+        public bool Remove(CustomerRoomDto modelDto)
         {
+            var model = _mapper.Map<CustomerRooms>(modelDto);
             return _customerRoomRepository.Remove(model);
         }
 
@@ -65,8 +77,9 @@ namespace HotelApi2.Application.Services
             return await _customerRoomRepository.RemoveAsync(id);
         }
 
-        public bool Update(CustomerRooms model)
+        public bool Update(CustomerRoomDto modelDto)
         {
+            var model = _mapper.Map<CustomerRooms>(modelDto);
             return _customerRoomRepository.Update(model);
         }
     }

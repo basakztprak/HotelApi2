@@ -1,4 +1,5 @@
-﻿using HotelApi2.Domain.Entities;
+﻿using HotelApi2.Application.Models;
+using HotelApi2.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,16 @@ namespace HotelApi2.Application.Services
 {
     public interface ICustomerService
     {
-        IQueryable<Customers> GetAll();
-        IQueryable<Customers> GetWhere(Expression<Func<Customers, bool>> method);
-        Task<Customers> GetSingleAsync(Expression<Func<Customers, bool>> method);
-        Task<Customers> GetByIdAsync(int id);
+        IQueryable<CustomerDto> GetAll();
+        IQueryable<CustomerDto> GetWhere(Expression<Func<Customers, bool>> method);
+        Task<CustomerDto> GetSingleAsync(Expression<Func<Customers, bool>> method);
+        Task<CustomerDto> GetByIdAsync(int id);
 
-        Task<bool> AddAsync(Customers model);
-        Task<bool> AddRangeAsync(List<Customers> datas);
-        bool RemoveRange(List<Customers> datas);
-        bool Remove(Customers model);
+        Task<bool> AddAsync(CustomerDto modelDto);
+        Task<bool> AddRangeAsync(List<CustomerDto> datasDto);
+        bool RemoveRange(List<CustomerDto> datasDto);
+        bool Remove(CustomerDto modelDto);
         Task<bool> RemoveAsync(int id);
-        bool Update(Customers model);
+        bool Update(CustomerDto modelDto);
     }
 }

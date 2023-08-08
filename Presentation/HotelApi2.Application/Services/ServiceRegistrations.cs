@@ -1,4 +1,5 @@
 ﻿using FluentAssertions.Common;
+using HotelApi2.Application.Mapper;
 using HotelApi2.Domain.Repositories.CustomerRepository;
 using HotelApi2.Domain.Repositories.CustomerRoomRepository;
 using HotelApi2.Domain.Repositories.RoomRepository;
@@ -27,7 +28,7 @@ namespace HotelApi2.Application.Services
             services.AddScoped<ICustomerRoomService, CustomerRoomService>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IRoomService, RoomService>();
-            
+            services.AddAutoMapper(typeof(MapperProfile).Assembly);
 
         }
     }

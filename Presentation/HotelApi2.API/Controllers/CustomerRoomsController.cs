@@ -1,4 +1,5 @@
-﻿using HotelApi2.Application.Services;
+﻿using AutoMapper;
+using HotelApi2.Application.Services;
 using HotelApi2.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,6 +11,12 @@ namespace HotelApi2.API.Controllers
     public class CustomerRoomsController : ControllerBase
     {
         readonly private ICustomerRoomService _customerRoomService;
+        readonly private IMapper _mapper;
+
+        public CustomerRoomsController(IMapper mapper)
+        {
+            _mapper = mapper;
+        }
 
         public CustomerRoomsController(ICustomerRoomService customerRoomService)
         {
@@ -70,8 +77,9 @@ namespace HotelApi2.API.Controllers
             return Ok(response);
         }
 
+        
 
 
 
-    }
+        }
 }

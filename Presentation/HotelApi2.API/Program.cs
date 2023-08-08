@@ -1,3 +1,4 @@
+using HotelApi2.Application.Mapper;
 using HotelApi2.Application.Services;
 using HotelApi2.Infastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -5,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 builder.Services.ConfigureServices();
 
 builder.Services.AddControllers();
