@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using HotelApi2.Application.Models;
 using HotelApi2.Application.Services;
 using HotelApi2.Domain.Entities;
@@ -12,11 +13,13 @@ namespace HotelApi2.API.Controllers
     public class CustomersController : ControllerBase
     {
         readonly private ICustomerService _customerService;
-        
+        private readonly IValidator<CustomerDto> _customerValidator;
 
-        public CustomersController(ICustomerService customerService)
+
+        public CustomersController(ICustomerService customerService, IValidator<CustomerDto> customerValidator)
         {
             _customerService = customerService;
+            _customerValidator = customerValidator;
         }
 
         //[HttpGet]
@@ -45,6 +48,11 @@ namespace HotelApi2.API.Controllers
         [HttpPost]
         public async Task<ActionResult<CustomerDto>> Post(CustomerDto customerDto)
         {
+            var validationResult = _customerValidator.Validate(customerDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
             var success = await _customerService.AddAsync(customerDto);
             return Ok(customerDto);
 

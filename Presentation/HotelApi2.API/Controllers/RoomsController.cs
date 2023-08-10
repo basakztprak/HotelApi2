@@ -1,4 +1,6 @@
-﻿using HotelApi2.Application.Services;
+﻿using FluentValidation;
+using HotelApi2.Application.Models;
+using HotelApi2.Application.Services;
 using HotelApi2.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +12,12 @@ namespace HotelApi2.API.Controllers
     public class RoomsController : ControllerBase
     {
         readonly private IRoomService _roomService;
+        private readonly IValidator<RoomDto> _roomValidator;
 
-        public RoomsController(IRoomService roomService)
+        public RoomsController(IRoomService roomService, IValidator<RoomDto> roomValidator)
         {
             _roomService = roomService;
+            _roomValidator = roomValidator;
         }
 
         //[HttpGet]
@@ -39,19 +43,24 @@ namespace HotelApi2.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Rooms>> Post(Rooms customerRoom)
+        public async Task<ActionResult<Rooms>> Post(RoomDto roomDto)
         {
-            var success = await _roomService.AddAsync(customerRoom);
-            return Ok(customerRoom);
+            var validationResult = _roomValidator.Validate(roomDto);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(validationResult.Errors);
+            }
+            var success = await _roomService.AddAsync(roomDto);
+            return Ok(roomDto);
 
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(Rooms room)
+        public async Task<IActionResult> Put(RoomDto roomDto)
         {
 
-            bool response = _roomService.Update(room);
-            return Ok(room);
+            bool response = _roomService.Update(roomDto);
+            return Ok(roomDto);
 
 
         }

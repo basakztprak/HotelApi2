@@ -17,3 +17,5 @@ namespace HotelApi2.Domain.Entities
 
     }
 }
+
+

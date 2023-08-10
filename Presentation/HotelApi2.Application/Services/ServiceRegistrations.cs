@@ -1,5 +1,9 @@
 ﻿using FluentAssertions.Common;
+using FluentValidation;
 using HotelApi2.Application.Mapper;
+using HotelApi2.Application.Models;
+using HotelApi2.Application.Validators;
+using HotelApi2.Domain.Entities;
 using HotelApi2.Domain.Repositories.CustomerRepository;
 using HotelApi2.Domain.Repositories.CustomerRoomRepository;
 using HotelApi2.Domain.Repositories.RoomRepository;
@@ -29,7 +33,8 @@ namespace HotelApi2.Application.Services
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddAutoMapper(typeof(MapperProfile).Assembly);
-
+            services.AddScoped<IValidator<RoomDto>, RoomValidator>();
+            services.AddScoped<IValidator<CustomerDto>, CustomerValidator>();
         }
     }
 }

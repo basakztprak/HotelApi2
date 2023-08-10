@@ -10,6 +10,6 @@ namespace HotelApi2.Application.Models
     {
         public string CustomerName { get; set; }
         public string CustomerSurname { get; set; }
-        public int CustomerId { get; set; }
+        public int CustomerPhoneNumber { get; set; }
     }
 }

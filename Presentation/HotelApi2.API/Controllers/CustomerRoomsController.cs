@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HotelApi2.Application.Models;
 using HotelApi2.Application.Services;
 using HotelApi2.Domain.Entities;
 using Microsoft.AspNetCore.Http;
@@ -46,19 +47,19 @@ namespace HotelApi2.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CustomerRooms>> Post(CustomerRooms customerRoom)
+        public async Task<ActionResult<CustomerRooms>> Post(CustomerRoomDto customerRoomDto)
         {
-            var success = await _customerRoomService.AddAsync(customerRoom);
-            return Ok(customerRoom);
+            var success = await _customerRoomService.AddAsync(customerRoomDto);
+            return Ok(customerRoomDto);
             
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(CustomerRooms customerRoom)
+        public async Task<IActionResult> Put(CustomerRoomDto customerRoomDto)
         {
 
-            bool response =  _customerRoomService.Update(customerRoom);
-            return Ok(customerRoom);
+            bool response =  _customerRoomService.Update(customerRoomDto);
+            return Ok(customerRoomDto);
 
 
         }

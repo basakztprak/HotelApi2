@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FluentValidation;
 using HotelApi2.Application.Models;
 using HotelApi2.Domain.Entities;
 using HotelApi2.Domain.Repositories.RoomRepository;
@@ -15,6 +16,7 @@ namespace HotelApi2.Application.Services
         {
         private readonly IRoomRepository _roomRepository;
         private readonly IMapper _mapper;
+        //private readonly IValidator<Rooms> _roomValidator;
 
         public RoomService(IRoomRepository roomReadRepository, IMapper mapper)
         {
