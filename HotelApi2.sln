@@ -7,13 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5E712129-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3463B2F7-7807-4933-9B97-197AB8963854}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApi2.Domain", "Core\HotelApi2.Domain\HotelApi2.Domain.csproj", "{D52790A8-5530-4C19-A3B8-0593E5BC8611}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2.Domain", "Core\HotelApi2.Domain\HotelApi2.Domain.csproj", "{D52790A8-5530-4C19-A3B8-0593E5BC8611}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApi2.Infastructure", "Core\HotelApi2.Infastructure\HotelApi2.Infastructure.csproj", "{8C532523-ABCF-44C0-BA2F-410B3C490841}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2.Infastructure", "Core\HotelApi2.Infastructure\HotelApi2.Infastructure.csproj", "{8C532523-ABCF-44C0-BA2F-410B3C490841}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApi2.API", "Presentation\HotelApi2.API\HotelApi2.API.csproj", "{A17735C9-ADC1-420D-9BEF-A1BA0E9AE217}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2.API", "Presentation\HotelApi2.API\HotelApi2.API.csproj", "{A17735C9-ADC1-420D-9BEF-A1BA0E9AE217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApi2.Application", "Presentation\HotelApi2.Application\HotelApi2.Application.csproj", "{10044B5B-AA86-40DB-A05B-F0D5B9A0334E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2.Application", "Presentation\HotelApi2.Application\HotelApi2.Application.csproj", "{10044B5B-AA86-40DB-A05B-F0D5B9A0334E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mqtt", "Mqtt\Mqtt.csproj", "{80AD0D7B-817C-4875-9248-B20E50087039}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{10044B5B-AA86-40DB-A05B-F0D5B9A0334E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10044B5B-AA86-40DB-A05B-F0D5B9A0334E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10044B5B-AA86-40DB-A05B-F0D5B9A0334E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80AD0D7B-817C-4875-9248-B20E50087039}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80AD0D7B-817C-4875-9248-B20E50087039}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80AD0D7B-817C-4875-9248-B20E50087039}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80AD0D7B-817C-4875-9248-B20E50087039}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

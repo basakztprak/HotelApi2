@@ -17,12 +17,15 @@
     <PackageReference Include="FluentValidation" Version="11.6.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.6.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="MQTTnet" Version="3.0.13" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\HotelApi2.Domain\HotelApi2.Domain.csproj" />
     <ProjectReference Include="..\..\Core\HotelApi2.Infastructure\HotelApi2.Infastructure.csproj" />
+    <ProjectReference Include="..\..\Mqtt\Mqtt.csproj" />
   </ItemGroup>
 
 </Project>

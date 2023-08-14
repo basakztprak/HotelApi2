@@ -4,6 +4,7 @@ using HotelApi2.Application.Services;
 using HotelApi2.Domain.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Mqtt;
 
 namespace HotelApi2.API.Controllers
 {
@@ -13,11 +14,15 @@ namespace HotelApi2.API.Controllers
     {
         readonly private IRoomService _roomService;
         private readonly IValidator<RoomDto> _roomValidator;
+        private readonly MqttPublisher _mqttPublisher;
+        //var publisher = new MqttPublisher();
+        //publisher.Publish("someTopic", "someMessage");
 
-        public RoomsController(IRoomService roomService, IValidator<RoomDto> roomValidator)
+        public RoomsController(IRoomService roomService, IValidator<RoomDto> roomValidator, MqttPublisher mqttPublisher)
         {
             _roomService = roomService;
             _roomValidator = roomValidator;
+            _mqttPublisher = mqttPublisher;
         }
 
         //[HttpGet]
@@ -51,6 +56,21 @@ namespace HotelApi2.API.Controllers
                 return BadRequest(validationResult.Errors);
             }
             var success = await _roomService.AddAsync(roomDto);
+            if (success)
+            {
+                if (_mqttPublisher.IsConnected)
+                {
+                    await _mqttPublisher.PublishAsync("reservation", "Rezervasyon yapıldı!");
+                }
+                else
+                {
+                    // Burada, bağlantı başarısız olduğunda yapılacak işlemleri tanımlayabilirsiniz.
+                    // Örneğin: Bir hata log'u kaydedebilirsiniz.
+                    //_logger.LogError("MQTT Publisher bağlantı kuramadı.");
+                }
+            }
+
+
             return Ok(roomDto);
 
         }
