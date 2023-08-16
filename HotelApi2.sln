@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5E712129-E0E4-447B-B62F-BB4180581511}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{3463B2F7-7807-4933-9B97-197AB8963854}"
+	ProjectSection(SolutionItems) = preProject
+		Core\HotelApi2.Infastructure\Repositories\Repository.cs = Core\HotelApi2.Infastructure\Repositories\Repository.cs
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2.Domain", "Core\HotelApi2.Domain\HotelApi2.Domain.csproj", "{D52790A8-5530-4C19-A3B8-0593E5BC8611}"
 EndProject
@@ -15,7 +18,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2.API", "Presentati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2.Application", "Presentation\HotelApi2.Application\HotelApi2.Application.csproj", "{10044B5B-AA86-40DB-A05B-F0D5B9A0334E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mqtt", "Mqtt\Mqtt.csproj", "{80AD0D7B-817C-4875-9248-B20E50087039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mqtt", "Mqtt\Mqtt.csproj", "{80AD0D7B-817C-4875-9248-B20E50087039}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2Mongo.API", "Presentation\HotelApi2Mongo.API\HotelApi2Mongo.API.csproj", "{1DEFF28D-7899-4429-8AA5-BBE4379ECAED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApi2Mongo.Application", "Presentation\HotelApi2Mongo.Application\HotelApi2Mongo.Application.csproj", "{845C5860-9E4A-4D81-9894-7A78D4FB5849}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +50,14 @@ Global
 		{80AD0D7B-817C-4875-9248-B20E50087039}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80AD0D7B-817C-4875-9248-B20E50087039}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80AD0D7B-817C-4875-9248-B20E50087039}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DEFF28D-7899-4429-8AA5-BBE4379ECAED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DEFF28D-7899-4429-8AA5-BBE4379ECAED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DEFF28D-7899-4429-8AA5-BBE4379ECAED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DEFF28D-7899-4429-8AA5-BBE4379ECAED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{845C5860-9E4A-4D81-9894-7A78D4FB5849}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{845C5860-9E4A-4D81-9894-7A78D4FB5849}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{845C5860-9E4A-4D81-9894-7A78D4FB5849}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{845C5860-9E4A-4D81-9894-7A78D4FB5849}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +67,8 @@ Global
 		{8C532523-ABCF-44C0-BA2F-410B3C490841} = {5E712129-E0E4-447B-B62F-BB4180581511}
 		{A17735C9-ADC1-420D-9BEF-A1BA0E9AE217} = {3463B2F7-7807-4933-9B97-197AB8963854}
 		{10044B5B-AA86-40DB-A05B-F0D5B9A0334E} = {3463B2F7-7807-4933-9B97-197AB8963854}
+		{1DEFF28D-7899-4429-8AA5-BBE4379ECAED} = {3463B2F7-7807-4933-9B97-197AB8963854}
+		{845C5860-9E4A-4D81-9894-7A78D4FB5849} = {3463B2F7-7807-4933-9B97-197AB8963854}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AB16EC1-4BDC-4E5B-BC54-64CD0BECC2C9}
