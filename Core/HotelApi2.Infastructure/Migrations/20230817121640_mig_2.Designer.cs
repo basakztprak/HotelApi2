@@ -4,6 +4,7 @@ using HotelApi2.Infastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HotelApi2.Infastructure.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230817121640_mig_2")]
+    partial class mig_2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,12 +73,12 @@ namespace HotelApi2.Infastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoomId")
+                    b.Property<int?>("RoomsId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RoomId");
+                    b.HasIndex("RoomsId");
 
                     b.ToTable("Customers");
                 });
@@ -125,11 +128,9 @@ namespace HotelApi2.Infastructure.Migrations
 
             modelBuilder.Entity("HotelApi2.Domain.Entities.Customers", b =>
                 {
-                    b.HasOne("HotelApi2.Domain.Entities.Rooms", "Room")
+                    b.HasOne("HotelApi2.Domain.Entities.Rooms", null)
                         .WithMany("Customers")
-                        .HasForeignKey("RoomId");
-
-                    b.Navigation("Room");
+                        .HasForeignKey("RoomsId");
                 });
 
             modelBuilder.Entity("HotelApi2.Domain.Entities.Rooms", b =>

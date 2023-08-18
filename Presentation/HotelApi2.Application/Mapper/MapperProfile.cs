@@ -19,6 +19,15 @@ namespace HotelApi2.Application.Mapper
             CreateMap<CustomerDto, Customers>();
             CreateMap<Rooms, RoomDto>();
             CreateMap<RoomDto, Rooms>();
+            CreateMap<Rooms, RoomWithCustomersDto>();
+            CreateMap<Customers, CustomerWithRoomDto>()
+                  .ForMember(dest => dest.Room, opt => opt.MapFrom(src => src.Room)); // obje olarak döndürüldü
+
+            CreateMap<Customers, CustomerWithRoomDto2>()
+                .ForMember(dest => dest.RoomId, opt => opt.MapFrom(src => src.Room.Id))  // tek tek döndürüldü
+                .ForMember(dest => dest.RoomsNumber, opt => opt.MapFrom(src => src.Room.RoomsNumber)) // tek tek
+                .ForMember(dest => dest.Floor, opt => opt.MapFrom(src => src.Room.Floor)); // tek tek
+           
 
 
         }

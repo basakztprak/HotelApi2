@@ -14,14 +14,10 @@ namespace HotelApi2.API.Controllers
         readonly private ICustomerRoomService _customerRoomService;
         readonly private IMapper _mapper;
 
-        public CustomerRoomsController(IMapper mapper)
-        {
-            _mapper = mapper;
-        }
-
-        public CustomerRoomsController(ICustomerRoomService customerRoomService)
+        public CustomerRoomsController(ICustomerRoomService customerRoomService, IMapper mapper)
         {
             _customerRoomService = customerRoomService;
+            _mapper = mapper;
         }
 
         //[HttpGet]

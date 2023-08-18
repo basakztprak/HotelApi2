@@ -98,8 +98,17 @@ namespace HotelApi2.Application.Services
             var model = _mapper.Map<Customers>(modelDto);
             return _customerRepository.Update(model);
         }
+        public CustomerWithRoomDto GetCustomerWithRoom(int customerId)
+        {
+            var customer = _customerRepository.GetCustomerWithRoom(customerId);
+            return _mapper.Map<CustomerWithRoomDto>(customer);
+        }
 
-
+        public CustomerWithRoomDto2 GetCustomerWithRoom2(int customerId)
+        {
+            var customer = _customerRepository.GetCustomerWithRoom2(customerId);
+            return _mapper.Map<CustomerWithRoomDto2>(customer);
+        }
 
     }
 }

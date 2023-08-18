@@ -22,7 +22,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mqtt", "Mqtt\Mqtt.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2Mongo.API", "Presentation\HotelApi2Mongo.API\HotelApi2Mongo.API.csproj", "{1DEFF28D-7899-4429-8AA5-BBE4379ECAED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApi2Mongo.Application", "Presentation\HotelApi2Mongo.Application\HotelApi2Mongo.Application.csproj", "{845C5860-9E4A-4D81-9894-7A78D4FB5849}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HotelApi2Mongo.Application", "Presentation\HotelApi2Mongo.Application\HotelApi2Mongo.Application.csproj", "{845C5860-9E4A-4D81-9894-7A78D4FB5849}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelApi2Redis", "HotelApi2Redis\HotelApi2Redis.csproj", "{392D9533-8498-44BE-894A-20A573723ADD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,6 +60,10 @@ Global
 		{845C5860-9E4A-4D81-9894-7A78D4FB5849}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{845C5860-9E4A-4D81-9894-7A78D4FB5849}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{845C5860-9E4A-4D81-9894-7A78D4FB5849}.Release|Any CPU.Build.0 = Release|Any CPU
+		{392D9533-8498-44BE-894A-20A573723ADD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{392D9533-8498-44BE-894A-20A573723ADD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{392D9533-8498-44BE-894A-20A573723ADD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{392D9533-8498-44BE-894A-20A573723ADD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

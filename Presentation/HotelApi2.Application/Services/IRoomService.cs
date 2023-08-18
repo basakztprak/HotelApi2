@@ -22,5 +22,6 @@ namespace HotelApi2.Application.Services
         bool Remove(RoomDto modelDto);
         Task<bool> RemoveAsync(int id);
         bool Update(RoomDto modelDto);
+        RoomWithCustomersDto GetRoomWithCustomers(int roomId);
     }
 }

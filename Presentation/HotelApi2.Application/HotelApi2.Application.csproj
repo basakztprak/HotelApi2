@@ -25,6 +25,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\HotelApi2.Domain\HotelApi2.Domain.csproj" />
     <ProjectReference Include="..\..\Core\HotelApi2.Infastructure\HotelApi2.Infastructure.csproj" />
+    <ProjectReference Include="..\..\HotelApi2Redis\HotelApi2Redis.csproj" />
     <ProjectReference Include="..\..\Mqtt\Mqtt.csproj" />
   </ItemGroup>
 

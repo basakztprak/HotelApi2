@@ -37,6 +37,28 @@ namespace HotelApi2.API.Controllers
 
         }
 
+        [HttpGet("{customerId}/with-room")]
+        public IActionResult GetCustomerWithRoom(int customerId)
+        {
+            var customer = _customerService.GetCustomerWithRoom(customerId);
+
+            if (customer == null)
+                return NotFound();
+
+            return Ok(customer);
+        }
+
+        [HttpGet("{customerId}/with-room2")]
+        public IActionResult GetCustomerWithRoom2(int customerId)
+        {
+            var customer = _customerService.GetCustomerWithRoom2(customerId);
+
+            if (customer == null)
+                return NotFound();
+
+            return Ok(customer);
+        }
+
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)

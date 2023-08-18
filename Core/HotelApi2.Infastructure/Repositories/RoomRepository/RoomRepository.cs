@@ -1,6 +1,7 @@
 ﻿using HotelApi2.Domain.Entities;
 using HotelApi2.Domain.Repositories.RoomRepository;
 using HotelApi2.Infastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,13 @@ namespace HotelApi2.Infastructure.Repositories.RoomRepository
         public RoomRepository(MyDbContext context) : base(context)
         {
         }
+            public Rooms GetRoomWithCustomers(int roomId)
+            {
+                return base._context.Rooms
+                               .Include(r => r.Customers)
+                               .FirstOrDefault(r => r.Id == roomId);
+            }
+
+        }
     }
-}
+

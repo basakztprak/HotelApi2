@@ -18,12 +18,14 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MQTTnet" Version="3.0.13" />
+    <PackageReference Include="StackExchange.Redis" Version="2.6.122" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\HotelApi2.Domain\HotelApi2.Domain.csproj" />
     <ProjectReference Include="..\..\Core\HotelApi2.Infastructure\HotelApi2.Infastructure.csproj" />
+    <ProjectReference Include="..\..\HotelApi2Redis\HotelApi2Redis.csproj" />
     <ProjectReference Include="..\..\Mqtt\Mqtt.csproj" />
     <ProjectReference Include="..\HotelApi2.Application\HotelApi2.Application.csproj" />
   </ItemGroup>

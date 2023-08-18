@@ -11,6 +11,7 @@ using HotelApi2.Infastructure.Data;
 using HotelApi2.Infastructure.Repositories.CustomerRepository;
 using HotelApi2.Infastructure.Repositories.CustomerRoomRepository;
 using HotelApi2.Infastructure.Repositories.RoomRepository;
+using HotelApi2Redis;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Mqtt;
@@ -43,6 +44,8 @@ namespace HotelApi2.Application.Services
 
             services.AddSingleton(new MqttPublisher(host, port));
             services.AddSingleton(new MqttSubscriber(host, port));
+
+            services.AddSingleton<RedisHelper>(new RedisHelper(Configuration.GetSection("RedisConfiguration:ConnectionString").Value));
         }
     }
 }

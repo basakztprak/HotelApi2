@@ -13,7 +13,7 @@ namespace HotelApi2.Infastructure.Repositories
 {
     public class Repository<T> : IReadRepository<T>, IWriteRepository<T> where T : BaseEntity
     {
-        private readonly MyDbContext _context;
+        protected readonly MyDbContext _context;
 
         public Repository(MyDbContext context)
         {
@@ -74,9 +74,6 @@ namespace HotelApi2.Infastructure.Repositories
             var saved = _context.SaveChangesAsync();
             return true;
         }
-
-        
-
 
     }
 }

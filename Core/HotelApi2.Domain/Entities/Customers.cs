@@ -11,8 +11,11 @@ namespace HotelApi2.Domain.Entities
     {
         public string CustomerName { get; set; }
         public string CustomerSurname { get; set; }
-        public int CustomerId { get; set; }
+        //public int CustomerId { get; set; }
         public int CustomerPhoneNumber { get; set; }
+        //public List<CustomerRooms> CustomerRooms { get; set; }
+        public int? RoomId { get; set; }
+        public Rooms Room { get; set; } // Bu müşterinin kaldığı oda.
 
     }
 }

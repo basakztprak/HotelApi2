@@ -2,6 +2,7 @@
 using HotelApi2.Application.Models;
 using HotelApi2.Application.Services;
 using HotelApi2.Domain.Entities;
+using HotelApi2Redis;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Mqtt;
@@ -17,12 +18,14 @@ namespace HotelApi2.API.Controllers
         private readonly MqttPublisher _mqttPublisher;
         //var publisher = new MqttPublisher();
         //publisher.Publish("someTopic", "someMessage");
+        private readonly RedisHelper _redisHelper;
 
-        public RoomsController(IRoomService roomService, IValidator<RoomDto> roomValidator, MqttPublisher mqttPublisher)
+        public RoomsController(IRoomService roomService, IValidator<RoomDto> roomValidator, MqttPublisher mqttPublisher, RedisHelper redisHelper)
         {
             _roomService = roomService;
             _roomValidator = roomValidator;
             _mqttPublisher = mqttPublisher;
+            _redisHelper = redisHelper;
         }
 
         //[HttpGet]
@@ -43,7 +46,32 @@ namespace HotelApi2.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
+            //// Redis'te bu id'ye karşılık gelen veriyi kontrol et
+            //var roomFromRedis = _redisHelper.Get<Rooms>($"room:{id}");
+
+            //if (roomFromRedis != null)
+            //{
+            //    // Eğer veri Redis'te varsa doğrudan döndür
+            //    return Ok(roomFromRedis);
+            //}
+
+            //// Eğer Redis'te veri yoksa veritabanından al
+            //var room = await _roomService.GetByIdAsync(id);
+
+            //// Alınan veriyi Redis'e ekleyin
+            //_redisHelper.Set($"room:{id}", room);
+
+            //return Ok(room);
             var room = await _roomService.GetByIdAsync(id);
+            return Ok(room);
+        }
+
+        [HttpGet("{id}/with-customers")]
+        public IActionResult GetRoomWithCustomers(int id)
+        {
+            var room = _roomService.GetRoomWithCustomers(id);
+            if (room == null)
+                return NotFound();
             return Ok(room);
         }
 

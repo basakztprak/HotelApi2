@@ -84,5 +84,10 @@ namespace HotelApi2.Application.Services
             var model = _mapper.Map<Rooms>(modelDto);
             return _roomRepository.Update(model);
         }
+        public RoomWithCustomersDto GetRoomWithCustomers(int roomId)
+        {
+            var room = _roomRepository.GetRoomWithCustomers(roomId);
+            return _mapper.Map<RoomWithCustomersDto>(room);
+        }
     }
 }

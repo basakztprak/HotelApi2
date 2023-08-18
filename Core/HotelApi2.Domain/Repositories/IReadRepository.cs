@@ -1,4 +1,5 @@
-﻿using HotelApi2.Domain.Entities.Common;
+﻿using HotelApi2.Domain.Entities;
+using HotelApi2.Domain.Entities.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace HotelApi2.Domain.Repositories
         IQueryable<T> GetWhere(Expression<Func<T, bool>> method);
         Task<T> GetSingleAsync(Expression<Func<T, bool>> method);
         Task<T> GetByIdAsync(int id);
+        //Rooms GetRoomWithCustomers(int roomId);
 
     }
 }

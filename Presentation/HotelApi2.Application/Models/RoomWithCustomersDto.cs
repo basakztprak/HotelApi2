@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelApi2.Application.Models
 {
-    public class RoomDto
+    public class RoomWithCustomersDto
     {
         public int Id { get; set; }
         public string RoomsNumber { get; set; }

@@ -9,5 +9,7 @@ namespace HotelApi2.Domain.Repositories.CustomerRepository
 {
     public interface ICustomerRepository : IReadRepository<Customers>, IWriteRepository<Customers>
     {
+        Customers GetCustomerWithRoom(int customerId);
+        Customers GetCustomerWithRoom2(int customerId);
     }
 }
